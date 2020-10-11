@@ -12,8 +12,6 @@ import (
 	"strings"
 )
 
-const appVersion = "0.1.0"
-
 var logger *zap.SugaredLogger
 
 var es *elasticsearch.Client
@@ -23,7 +21,7 @@ func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func versionHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "version: %s", appVersion)
+	fmt.Fprintf(w, "version: %s (%s)", semVer, gitVersion)
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
